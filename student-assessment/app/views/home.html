@@ -1,0 +1,45 @@
+    <section>
+      <h2>Student assessment reporting system</h2>
+      <form class="form-inline">
+        <fieldset>
+           <p>Please enter the following</p>
+           <p>Student ID: <input type="text" data-bind = "value: studentID" maxLength ="8" required/></p>
+           <p>Report to generate (1 for Diagnostic, 2 for Progress, 3 for Feedback):
+           <input type="text" data-bind = "value: reportType" maxLength ="1" required/></p>
+            <button type="submit" class="btn" data-bind="click: getReport">Submit</button>
+        </fieldset>
+      </form>
+      <h2><span data-bind = "text: reportHeading()"></span> report:</h2>
+      <div data-bind="visible: isDiagnostic()">
+      
+            <p><span data-bind="text:selectedStudentName()"></span> recently completed Numeracy assessment on <span data-bind="text:$data.dateTimeCompleted()"></span></p>
+            <p>He got <span data-bind="$data.scoreResults().rawScore()"></span> questions right out of <span data-bind="text:$data.totResponses().length"></span>. Details by strand given below:</p>
+       
+      <p></p>
+      <p> 
+      Numeracy and Algebra: 5 out of 5 correct<br/>
+      Measurement and Geometry: 7 out of 7 correct<br/>
+      Statistics and Probability: 3 out of 4 correct
+      </p>
+      </div>
+      <!--
+      <div data-bind="visible: isProgress">
+      <p>Tony Stark has completed Numeracy assessment 3 times in total. Date and raw score given below:</p>
+      <p></p>
+      <p>Date: 14th December 2019, Raw Score: 6 out of 16 <br/>
+         Date: 14th December 2020, Raw Score: 10 out of 16 <br/>
+         Date: 14th December 2021, Raw Score: 15 out of 16 </p>
+ 
+      <p>Tony Stark got 9 more correct in the recent completed assessment than the oldest</p>
+      </div>
+ 
+      <div data-bind="visible: isFeedback">
+        <p>Tony Stark recently completed Numeracy assessment on 16th December 2021 10:46 AM</p>
+        <p>He got 15 questions right out of 16. Feedback for wrong answers given below</p>
+ 
+        <p>Question: What is the 'median' of the following group of numbers 5, 21, 7, 18, 9?</p>
+        <p>Your answer: A with value 7</p>
+        <p>Right answer: B with value 9</p>
+        <p>Hint: You must first arrange the numbers in ascending order. The median is the middle term, which in this case is 9</p>
+      </div>-->
+    </section>
