@@ -138,6 +138,15 @@ function test_input($data)
 	 	
 	 	return $isExisting;
 	 }
+	 function isValidStudentID($studentsData, $studentID){
+	 	$returnVal = false;
+	 	foreach($studentsData as $stdata){
+	 		if(!strcmp($stdata["id"], $studentID)) {
+	 			$returnVal = true;
+	 		}
+	 	}
+	 	return $returnVal;
+	 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 	{        
@@ -148,11 +157,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		else 
 		{            
 			$studentID = test_input($_POST["studentID"]); 
-
 			// check if studentID is valid          
-			if (!preg_match("/student/i",$studentID)) 
-			{            
-				$studentIDErr = "Please enter valid student id (Hint: Enter 'student' followed by a number)";            
+			if (!isValidStudentID($studentsData, $studentID)) 
+			{
+			  $studentIDErr = "Please enter valid student id (Hint: Enter 'student' followed by a number)";    
 			}        
 		}   
 
